@@ -26,3 +26,21 @@ $(".saveBtn").on("click", function () {
 
     localStorage.setItem("event_" + blockHour, eventText);
 });
+
+// Function to load events from local storage
+function loadEvents() {
+    $(".time-block").each(function () {
+        var blockHour = $(this).attr("data-hour");
+        var savedEvent = localStorage.getItem("event_" + blockHour);
+
+        if (savedEvent) {
+            $("#" + "event_" + blockHour).val(savedEvent);
+        }
+    });
+}
+
+
+updateHourBlocks();
+loadEvents(); 
+});
+
